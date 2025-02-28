@@ -50,7 +50,6 @@ struct ContentView: View {
             }
         } catch {
             print("invalid data")
-            
         }
     }
 }

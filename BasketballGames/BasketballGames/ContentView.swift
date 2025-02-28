@@ -18,7 +18,6 @@ struct ContentView: View {
     @State private var games = [Game]()
     
     var body: some View {
-        
         VStack(alignment: .leading) {
             Text("UNC Basketball")
                 .font(.largeTitle)
@@ -50,9 +49,7 @@ struct ContentView: View {
         .task {
             await loadData()
         }
-  
- 
-           }
+    }
     
     func loadData() async {
         guard let url = URL(string: "https://api.samuelshi.com/uncbasketball") else {
@@ -68,13 +65,8 @@ struct ContentView: View {
             print("Invalid data: \(error.localizedDescription)")
         }
     }
-  
 }
     
-
- 
-
-
 #Preview {
     ContentView()
 }
