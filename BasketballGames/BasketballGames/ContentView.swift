@@ -18,12 +18,7 @@ struct ContentView: View {
     @State private var games = [Game]()
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("UNC Basketball")
-                .font(.largeTitle)
-                .bold()
-                .padding(.leading)
-            
+        NavigationStack {
             List(games) { game in
                 VStack(alignment: .leading) {
                     HStack {
@@ -45,12 +40,13 @@ struct ContentView: View {
                 }
                 .padding(.vertical, 5)
             }
-        }
-        .task {
-            await loadData()
+            .navigationTitle("UNC Basketball")
+            .task {
+                await loadData()
+            }
         }
     }
-    
+
     func loadData() async {
         guard let url = URL(string: "https://api.samuelshi.com/uncbasketball") else {
             print("Invalid URL")
@@ -66,7 +62,7 @@ struct ContentView: View {
         }
     }
 }
-    
+
 #Preview {
     ContentView()
 }
